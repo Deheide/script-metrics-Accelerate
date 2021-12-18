@@ -1,10 +1,22 @@
 #!/bin/sh
 
-while getopts r:o: flag
+usage()
+{
+  echo "-r"'\t'"repository name"
+  echo "-o"'\t'"owner of a repository name"
+  exit 2
+}
+
+
+while getopts r:o:h flag
 do
     case "${flag}" in
         r) REPO_NAME=${OPTARG};;
         o) OWNER_NAME=${OPTARG};;
+        h) # Display help.
+            usage
+            exit 0
+        ;;
     esac
 done
 
