@@ -75,15 +75,15 @@ then
         COUNT_TAG=$(($COUNT_TAG+1));
 
         #loop for 2 seconds period between requests
-        j=1;
-        while [ $j -le 2 ]
-        do
-            sleep 1;
-            #printing seconds in real time on screen
-            echo -n ".."$j;
-            j=$(($j+1));
-        done
-        echo "";
+        # j=1;
+        # while [ $j -le 2 ]
+        # do
+        #     sleep 1;
+        #     #printing seconds in real time on screen
+        #     echo -n ".."$j;
+        #     j=$(($j+1));
+        # done
+        # echo "";
     done
 
 
@@ -120,9 +120,20 @@ then
         done
     done
     echo ""
-    echo "This many deploys happened in the timespan:"$totalDeploys;
-
-
+    totalMonths=$(($EXTRA_MONTHS+1));
+    echo $totalDeploys" deploys happened in "$totalMonths" months.";
+    result=$(jq -n "$totalDeploys"/"$totalMonths");
+    if $(jq -n ""$result" >= 30"); then
+        echo "Deployment frequency: On demand";
+    elif $(jq -n  ""$result" < 30 ") && $(jq -n ""$result" >= 4"); then
+        echo "Deployment frequency: Between one time per day and one time per week";
+    elif $(jq -n  ""$result" < 4 ") && $(jq -n ""$result" >= 1"); then
+        echo "Deployment frequency: Between one time per week and one time per month";
+    elif $(jq -n  ""$result" < 1 ") && $( jq -n ""$result" >= 0.166"); then
+        echo "Deployment frequency: Between one time per month and one time per 6 months";
+    elif $(jq -n  ""$result" < 0.166 "); then
+        echo "Deployment frequency: less than 6 months";
+    fi
 
     #For debugging purposes , here we can print all the tags with it release dates together
     # for ((i=0;i<$TOTALVERSIONS;i++)); do
