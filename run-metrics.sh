@@ -5,10 +5,10 @@
 
 usage()
 {
-  echo "-r"'\t'"repository name"
-  echo "-o"'\t'"owner of a repository name"
-  echo "-d"'\t'"starting date of period following the format: YEAR-MONTH E.g: 2021-11  .If not set, the default value is the present month"
-  echo "-m"'\t'"how many months past starting date to analysis. E.g: 1, 2 .   .If not set, the default value is 0"
+  echo -e "-r"'\t'"repository name"
+  echo -e "-o"'\t'"owner of a repository name"
+  echo -e "-d"'\t'"starting date of period following the format: YEAR-MONTH E.g: 2021-11  .If not set, the default value is the present month"
+  echo -e "-m"'\t'"how many months past starting date to analysis. E.g: 1, 2 .   .If not set, the default value is 0"
   exit 2
 }
 
