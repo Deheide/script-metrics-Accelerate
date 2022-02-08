@@ -9,6 +9,8 @@ usage()
   echo -e "-o"'\t'"owner of a repository name"
   echo -e "-d"'\t'"starting date of period following the format: YEAR-MONTH E.g: 2021-11  .If not set, the default value is the present month"
   echo -e "-m"'\t'"how many months past starting date to analysis. E.g: 1, 2 .   .If not set, the default value is 0"
+  echo -e "-u"'\t'"Git user."
+  echo -e "-t"'\t'"Git user token."
   exit 2
 }
 
